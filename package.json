@@ -17,8 +17,11 @@
     "react-native": "0.76.9",
     "react-native-compressor": "^1.13.0",
     "react-native-gesture-handler": "^2.29.1",
-    "react-native-keyboard-controller": "^1.20.2",
+    "react-native-keyboard-controller": "^1.16.7",
     "react-native-permissions": "^5.4.4",
+    "react-native-reanimated": "3.16.7",
+    "react-native-safe-area-context": "^5.4.0",
+    "react-native-screens": "^4.9.0",
     "react-native-svg": "^15.12.1",
     "react-native-svg-transformer": "^1.5.1",
     "react-native-toast-message": "^2.3.3"
