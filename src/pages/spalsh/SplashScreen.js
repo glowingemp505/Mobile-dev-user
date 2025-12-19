@@ -13,10 +13,6 @@ const SplashScreen = () => {
         <Image source={appIcons.splashlogo} style={styles.logo} />
         <Text style={styles.text}>Meet your soulmate!</Text>
       </View>
-      <Image
-        source={appIcons.splash}
-        style={[styles.splashImage, { width: WP(45), height: WP(70) }]}
-      />
     </View>
   );
 };
@@ -28,20 +24,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   logo: {
-    width: 125,
-    height: 86,
+    width: 270,
+    height: 270,
     resizeMode: 'contain',
     marginTop: height < 700 ? 80 : '40%',
   },
   text: {
-    ...commonStyles.text,
+    ...commonStyles.header,
     marginTop: 10,
-    fontSize: 18,
+    // fontSize: 18,
   },
-  splashImage: {
-    resizeMode: 'contain',
-    marginBottom: 50,
-  },
+
 });
 
 export default SplashScreen;

@@ -62,15 +62,14 @@ export const fontSizes = {
 };
 
 export const fonts = {
-  black: 'Manrope-ExtraBold',
-  bold: 'Manrope-Bold',
-  semiBold: 'Manrope-SemiBold',
-  medium: 'Manrope-Medium',
-  regular: 'Manrope-Regular',
-  light: 'Manrope-Light',
-  extraLight: 'Manrope-ExtraLight',
-  variable: 'Manrope',
+  black: 'Inter_18pt-Black',
+  bold: 'Inter-18pt-Bold',
+  semiBold: 'Inter-18pt-SemiBold',
+  medium: 'Inter-18pt-Medium',
+  regular: 'Inter-18pt-Regular',
 };
+
+
 
 
 
@@ -97,9 +96,9 @@ export const commonStyles = StyleSheet.create({
     fontFamily: fonts.medium,
   },
   header: {
-    fontSize: fontSizes.medium,
-    fontFamily: fonts.medium,
-    color: colors.black,
+    fontSize: fontSizes.xxlarge,
+    fontFamily: fonts.black,
+    color: colors.white,
     marginBottom: 10,
   },
   btnDelContainer: {
