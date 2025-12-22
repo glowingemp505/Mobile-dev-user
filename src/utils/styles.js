@@ -154,6 +154,14 @@ export const commonStyles = StyleSheet.create({
     color: colors.black,
     fontFamily: fonts.regular,
   },
+  commonButton : {
+    marginTop: 24,
+    height: 60,
+    borderRadius: 16,
+    justifyContent: "center",
+    alignItems: "center",
+    width:"100%"
+  }
 });
 
 export default {

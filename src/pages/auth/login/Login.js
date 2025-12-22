@@ -277,4 +277,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     marginRight: 12,
   },
+  dontReceive: {
+    color: colors.white,
+    fontFamily: fonts.regular,
+    fontSize: fontSizes.medium,
+  },
 });

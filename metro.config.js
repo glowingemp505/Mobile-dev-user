@@ -11,6 +11,7 @@ const config = {
     babelTransformerPath: require.resolve('react-native-svg-transformer'),
   },
   resolver: {
+    useWatchman : false,
     assetExts: [
       'png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp', 
       'mp4', 'm4v', 'mov', 'mp3', 'aac', 
