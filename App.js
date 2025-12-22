@@ -31,7 +31,7 @@ function App() {
     <GestureHandlerRootView style={styles.container}>
       <KeyboardProvider>
         <StatusBar
-          backgroundColor={colors.primary}
+          backgroundColor={colors.black}
           barStyle={'light-content'}
         />
         {!loader ? <SplashScreen /> : <Route />}

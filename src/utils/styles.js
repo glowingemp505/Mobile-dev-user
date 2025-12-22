@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 // Define primary colors
 export const colors = {
   lightgrayApp: '#E4E4E4',
-  primary: '#181818',
+  primary: '#A855F7',
   secondary: '#EEF8FF',
   background: '#FFFFFF',
   black: '#000000',
@@ -58,24 +58,22 @@ export const fontSizes = {
   large: 20,
   mlarge: 22,
   xlarge: 24,
-  xxlarge: 53,
+  xxlarge: 40,
 };
 
 export const fonts = {
-  black: 'Inter_18pt-Black',
-  bold: 'Inter-18pt-Bold',
-  semiBold: 'Inter-18pt-SemiBold',
-  medium: 'Inter-18pt-Medium',
-  regular: 'Inter-18pt-Regular',
+  black: Platform.OS === "android" ? 'Inter-18pt-Black' : 'Inter18pt-Black',
+  bold: Platform.OS === "android" ? 'Inter-18pt-Bold' : 'Inter18pt-Bold',
+  semiBold: Platform.OS === "android" ? 'Inter-18pt-SemiBold' : 'Inter18pt-SemiBold',
+  medium: Platform.OS === "android" ? 'Inter-18pt-Medium' : 'Inter18pt-Medium',
+  regular: Platform.OS === "android" ? 'Inter-18pt-Regular' : 'Inter18pt-Regular',
 };
-
-
 
 
 
 export const commonStyles = StyleSheet.create({
   container: {
-    backgroundColor: colors.primary,
+    backgroundColor: colors.black,
     flex: 1,
   },
   safearea: {
@@ -87,9 +85,9 @@ export const commonStyles = StyleSheet.create({
     fontFamily: fonts.semiBold,
   },
   linkSmallText: {
-    fontSize: fontSizes.small,
-    color: colors.primary,
-    fontFamily: fonts.medium,
+    fontSize: fontSizes.xSmall,
+    color: '#9CA3AF',
+    fontFamily: fonts.regular,
   },
   text: {
     color: colors.textColor,
@@ -97,7 +95,7 @@ export const commonStyles = StyleSheet.create({
   },
   header: {
     fontSize: fontSizes.xxlarge,
-    fontFamily: fonts.black,
+    fontFamily: fonts.bold,
     color: colors.white,
     marginBottom: 10,
   },

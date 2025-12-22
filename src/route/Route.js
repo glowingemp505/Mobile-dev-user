@@ -5,6 +5,8 @@ import { ROUTES } from '../constants/routes';
 
 import { navigationRef} from '../utils/navigation/navigation';
 import Login from '../pages/auth/login/Login';
+import Onboarding from '../pages/auth/onboarding/Onboarding';
+import Signup from '../pages/auth/signup/Signup';
 
 
 
@@ -15,9 +17,11 @@ function Route() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName={ROUTES.LOGIN}
+        initialRouteName={ROUTES.ONBOARDING}
       >
         <Stack.Screen name={ROUTES.LOGIN} component={Login} />
+        <Stack.Screen name={ROUTES.ONBOARDING} component={Onboarding} />
+        <Stack.Screen name={ROUTES.SIGNUP} component={Signup} />
         
       </Stack.Navigator>
     </NavigationContainer>
