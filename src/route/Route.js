@@ -14,6 +14,7 @@ import PaymentDetails from "src/pages/profile/payment-details";
 import LinkYourBank from "src/pages/profile/link-your-bank";
 import YoureAllSet from "src/pages/profile/youre-all-set";
 import CustomBottomTabBar from "./CustomBottomTabBar";
+import Settings from "src/pages/profile/setting";
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ function Route() {
         <Stack.Screen name={ROUTES.LinkYourBank} component={LinkYourBank} />
         <Stack.Screen name={ROUTES.YoureAllSet} component={YoureAllSet} />
         <Stack.Screen name={ROUTES.HOME} component={CustomBottomTabBar} />
+        <Stack.Screen name={ROUTES.Settings} component={Settings} />
       </Stack.Navigator>
     </NavigationContainer>
   );

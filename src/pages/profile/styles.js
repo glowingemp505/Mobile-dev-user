@@ -120,10 +120,9 @@ export default StyleSheet.create({
   },
 
   titleStyle: {
-    color: "#A1A1A9",
-    fontSize: 15,
+    color: colors.white,
+    fontSize: 16,
     fontFamily: fonts.medium,
-    marginTop: 4,
   },
 
   card: {
@@ -139,7 +138,7 @@ export default StyleSheet.create({
 
   leftRow: {
     flexDirection: "row",
-    alignItems: "center",
+    gap:10
   },
 
   textColumn: {
@@ -161,9 +160,11 @@ export default StyleSheet.create({
 
   dangerCard: {
     backgroundColor: "#2A1515",
+    borderWidth:1,
+    borderColor:"#491212"
   },
 
   dangerText: {
-    color: "#EF4444",
+    color:"#DE524C",
   },
 });

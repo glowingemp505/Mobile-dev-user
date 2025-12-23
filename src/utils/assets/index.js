@@ -25,6 +25,16 @@ import bulb from "@assets/icons/bulb.svg";
 import bulbfill from "@assets/icons/bulbfill.svg";
 import userfiill from "@assets/icons/userfiill.svg";
 import bitcoin from "@assets/icons/bitcoin.svg";
+import right from "@assets/icons/right.svg";
+import userWhite from "@assets/icons/userWhite.svg";
+import cardWhite from "@assets/icons/cardWhite.svg";
+import bankwhite from "@assets/icons/bankwhite.svg";
+import bell from "@assets/icons/bell.svg";
+import shieldWhite from "@assets/icons/shieldWhite.svg";
+import setting from "@assets/icons/setting.svg";
+import help from "@assets/icons/help.svg";
+import logout from "@assets/icons/logout.svg";
+import moon from "@assets/icons/moon.svg";
 
 const appImages = {
   Onboarding_1: require("@assets/onboarding/onboarding1.png"),
@@ -73,6 +83,15 @@ const appIcons = {
   userfiill,
   targetfill,
   bitcoin,
+  right,
+  userWhite,
+  cardWhite,
+  bankwhite,
+  bell,
+  shieldWhite,
+  setting,
+  help,
+  logout,moon
 };
 
 export { appImages, appIcons };

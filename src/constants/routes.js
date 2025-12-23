@@ -9,4 +9,5 @@ export const ROUTES = {
   LinkYourBank: "LinkYourBank",
   YoureAllSet: "YoureAllSet",
   HOME: "Home",
+  Settings: "Settings",
 };

@@ -28,7 +28,7 @@ const Profile = () => {
       id: "1",
       title: "Edit Profile",
       subtitle: "Update your information",
-      icon: appIcons.user,
+      icon: appIcons.userWhite,
       route: "EditProfile",
       type: "normal",
     },
@@ -36,7 +36,7 @@ const Profile = () => {
       id: "2",
       title: "Payment methods",
       subtitle: "Manage cards & accounts",
-      icon: appIcons.card,
+      icon: appIcons.cardWhite,
       route: "PaymentMethods",
       type: "normal",
     },
@@ -44,7 +44,7 @@ const Profile = () => {
       id: "3",
       title: "Linked Banks",
       subtitle: "3 accounts connected",
-      icon: appIcons.banck,
+      icon: appIcons.bankwhite,
       route: "LinkedBanks",
       type: "normal",
     },
@@ -52,7 +52,7 @@ const Profile = () => {
       id: "4",
       title: "Notifications",
       subtitle: "Alerts & reminders",
-      icon: appIcons.banck,
+      icon: appIcons.bell,
       route: "Notifications",
       type: "normal",
     },
@@ -60,7 +60,7 @@ const Profile = () => {
       id: "5",
       title: "Security",
       subtitle: "Password & 2FA",
-      icon: appIcons.shield,
+      icon: appIcons.shieldWhite,
       route: "Security",
       type: "normal",
     },
@@ -68,22 +68,22 @@ const Profile = () => {
       id: "6",
       title: "Preferences",
       subtitle: "App Settings",
-      icon: appIcons.banck,
-      route: "Preferences",
+      icon: appIcons.setting,
+      route: "Settings",
       type: "normal",
     },
     {
       id: "7",
       title: "Help & Support",
       subtitle: "FAQs & contact",
-      icon: appIcons.banck,
+      icon: appIcons.help,
       route: "HelpSupport",
       type: "normal",
     },
     {
       id: "8",
       title: "Help & Support",
-      icon: appIcons.banck,
+      icon: appIcons.logout,
       route: "Logout",
       type: "danger",
     },
@@ -107,35 +107,24 @@ const Profile = () => {
 
   const renderItem = ({ item }) => {
     const Icon = item.icon;
+    const logoutType = item.type === "danger";
 
     return (
       <TouchableOpacity
-        style={[styles.card, item.type === "danger" && styles.dangerCard]}
+        style={[styles.card, logoutType && styles.dangerCard]}
         onPress={() => navigation.navigate(item.route)}
         activeOpacity={0.8}
       >
-        {/* LEFT */}
         <View style={styles.leftRow}>
           {<item.icon />}
-
-          <View style={styles.textColumn}>
-            <Text
-              style={[
-                styles.title,
-                item.type === "danger" && styles.dangerText,
-              ]}
-            >
+          <View style={{ gap: 5 }}>
+            <Text style={[styles.titleStyle, logoutType && styles.dangerText]}>
               {item.title}
             </Text>
-
-            {item.subtitle && (
-              <Text style={styles.subtitle}>{item.subtitle}</Text>
-            )}
+            <Text style={styles.subtitle}>{item.subtitle}</Text>
           </View>
         </View>
-
-        {/* RIGHT */}
-        {/* {item.type !== "danger" && <appIcons.arrowRight />} */}
+        {item.type !== "danger" && <appIcons.right />}
       </TouchableOpacity>
     );
   };
@@ -195,6 +184,8 @@ const Profile = () => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           scrollEnabled={false}
+          style={{ width: "100%", paddingHorizontal: 16 }}
+          contentContainerStyle={{ width: "100%" }}
         />
       </ScrollView>
     </SafeAreaView>
