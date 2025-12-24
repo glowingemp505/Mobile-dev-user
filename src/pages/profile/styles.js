@@ -32,7 +32,6 @@ export default StyleSheet.create({
   scroll: {
     flexGrow: 1,
     alignItems: "center",
-    paddingBottom: 30,
   },
 
   cicleView: {

@@ -35,6 +35,14 @@ import setting from "@assets/icons/setting.svg";
 import help from "@assets/icons/help.svg";
 import logout from "@assets/icons/logout.svg";
 import moon from "@assets/icons/moon.svg";
+import fingerprint from "@assets/icons/fingerprint.svg";
+import globefilled from "@assets/icons/globefilled.svg";
+import rightgray from "@assets/icons/rightgray.svg";
+import theme from "@assets/icons/theme.svg";
+import db from "@assets/icons/db.svg";
+import info from "@assets/icons/info.svg";
+import add from "@assets/icons/add.svg";
+import righFull from "@assets/icons/righFull.svg";
 
 const appImages = {
   Onboarding_1: require("@assets/onboarding/onboarding1.png"),
@@ -55,6 +63,27 @@ const appIcons = {
   googleIcon: require("@assets/icons/google.png"),
   check: require("@assets/icons/check.png"),
   pro: require("@assets/icons/pro.png"),
+  shieldFill: require("@assets/icons/shieldFill.png"),
+  car: require("@assets/icons/car.png"),
+  fly: require("@assets/icons/fly.png"),
+  house: require("@assets/icons/house.png"),
+  filter: require("@assets/icons/filter.png"),
+  racingcar: require("@assets/icons/racingcar.png"),
+  coffee: require("@assets/icons/coffee.png"),
+  music: require("@assets/icons/music.png"),
+  box: require("@assets/icons/box.png"),
+  greenArrow: require("@assets/icons/greenArrow.png"),
+  downRed: require("@assets/icons/downRed.png"),
+  addPrimay: require("@assets/icons/addPrimay.png"),
+  send: require("@assets/icons/send.png"),
+  download: require("@assets/icons/download.png"),
+  stats: require("@assets/icons/stats.png"),
+  starfour: require("@assets/icons/starfour.png"),
+  overlay: require("@assets/icons/overlay.png"),
+  grow: require("@assets/icons/grow.png"),
+  alert: require("@assets/icons/alert.png"),
+  reddown: require("@assets/icons/reddown.png"),
+  popularStar: require("@assets/icons/popularStar.png"),
   success: SuccessIcon,
   error: ErrorIcon,
   user: User,
@@ -91,7 +120,16 @@ const appIcons = {
   shieldWhite,
   setting,
   help,
-  logout,moon
+  logout,
+  moon,
+  fingerprint,
+  globefilled,
+  rightgray,
+  theme,
+  db,
+  info,
+  add,
+  righFull,
 };
 
 export { appImages, appIcons };

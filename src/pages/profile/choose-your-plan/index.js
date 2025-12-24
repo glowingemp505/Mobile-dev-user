@@ -74,6 +74,12 @@ const ChooseYourPlan = () => {
         onPress={() => handleCardPress(item)}
         activeOpacity={0.8}
       >
+        {item.id === "pro" && (
+          <CommonLinearGradient style={styles.popularMain}>
+            <Image source={appIcons.popularStar} style={styles.popularStar} />
+            <Text style={styles.popularText}>Popular</Text>
+          </CommonLinearGradient>
+        )}
         {isSelected && (
           <View style={styles.miniCircle}>
             <Image source={appIcons.check} style={styles.check} />

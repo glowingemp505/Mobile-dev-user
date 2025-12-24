@@ -7,7 +7,10 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
@@ -16,6 +19,7 @@ import CommonLinearGradient from "src/components/CommonLinearGradient";
 
 const Profile = () => {
   const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
 
   const statusData = [
     { id: 1, title: "Accounts", number: 3 },
@@ -130,8 +134,12 @@ const Profile = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      {/* BACK */}
+    <View
+      style={[
+        styles.container,
+        { paddingTop: insets.top > 0 ? insets.top + 5 : 20 },
+      ]}
+    >
       <TouchableOpacity
         style={styles.backBtn}
         onPress={() => navigation.goBack()}
@@ -145,7 +153,6 @@ const Profile = () => {
         contentContainerStyle={styles.scroll}
         showsVerticalScrollIndicator={false}
       >
-        {/* AVATAR */}
         <View>
           <CommonLinearGradient style={styles.cicleView}>
             <Text style={styles.nameText}>JD</Text>
@@ -156,19 +163,16 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
 
-        {/* TITLE */}
         <View style={styles.textView}>
           <Text style={styles.setting}>Settings</Text>
           <Text style={styles.email}>john@example.com</Text>
         </View>
 
-        {/* PRO */}
         <View style={styles.becomProCard}>
           <appIcons.bitcoin />
           <Text style={styles.planText}>Pro Member</Text>
         </View>
 
-        {/* STATUS */}
         <FlatList
           data={statusData}
           horizontal
@@ -178,7 +182,6 @@ const Profile = () => {
           showsHorizontalScrollIndicator={false}
         />
 
-        {/* SETTINGS LIST */}
         <FlatList
           data={PROFILE_LIST}
           renderItem={renderItem}
@@ -188,7 +191,7 @@ const Profile = () => {
           contentContainerStyle={{ width: "100%" }}
         />
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 

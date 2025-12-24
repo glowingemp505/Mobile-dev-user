@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     borderRadius: 12,
     position: "absolute",
-    right: 20,
+    right: 30,
     top: 30,
   },
   signInBtn: {
@@ -87,6 +87,29 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: fonts.semiBold,
     color: "#fff",
+  },
+  popularStar: {
+    width: 16,
+    height: 16,
+    resizeMode: "contain",
+  },
+  popularMain: {
+    width: 103,
+    height: 22,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 100,
+    gap: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    position:"absolute",
+    right:20,
+    top:-10
+  },
+  popularText: {
+    color: colors.white,
+    fontSize: 13,
+    fontFamily: fonts.medium,
   },
 });
 

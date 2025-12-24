@@ -66,4 +66,16 @@ export default StyleSheet.create({
     alignItems: "center",
     gap: 10,
   },
+  rightButton: {
+    color: "#848484",
+    fontFamily: fonts.regular,
+    fontSize: 14,
+  },
+  spendNest: {
+    color: "#A1A1A9",
+    fontSize: 16,
+    fontFamily: fonts.regular,
+    textAlign: "center",
+    marginVertical: 10,
+  },
 });

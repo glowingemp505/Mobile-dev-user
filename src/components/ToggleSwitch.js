@@ -1,97 +1,68 @@
-import React from "react";
-import { Pressable, StyleSheet } from "react-native";
-import Animated, {
-  interpolate,
-  interpolateColor,
-  useAnimatedStyle,
-  useSharedValue,
-  useDerivedValue,
-  withTiming,
-} from "react-native-reanimated";
+import React, { useEffect, useRef } from "react";
+import { Pressable, StyleSheet, Animated } from "react-native";
 import { colors } from "src/utils/styles";
 
 const ToggleSwitch = ({
   value,
   onPress,
-  style,
-  duration = 400,
+  duration = 250,
   trackColors = { on: colors.black, off: colors.black },
   thumbColors = { on: colors.white, off: colors.semiTransparent },
 }) => {
-  const height = useSharedValue(0);
-  const width = useSharedValue(0);
+  const animValue = useRef(new Animated.Value(value ? 1 : 0)).current;
 
-  const isShared = typeof value === "object" && "value" in value;
+  useEffect(() => {
+    Animated.timing(animValue, {
+      toValue: value ? 1 : 0,
+      duration,
+      useNativeDriver: false,
+    }).start();
+  }, [value]);
 
-  // Create derived animated value
-  const animatedValue = useDerivedValue(() =>
-    withTiming(isShared ? value.value : value ? 1 : 0, { duration })
-  );
-
-  const trackAnimatedStyle = useAnimatedStyle(() => {
-    const backgroundColor = interpolateColor(
-      animatedValue.value,
-      [0, 1],
-      [trackColors.off, trackColors.on]
-    );
-
-    return {
-      backgroundColor,
-      borderRadius: height.value / 2,
-    };
+  const translateX = animValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [3, 26],
   });
 
-  const thumbAnimatedStyle = useAnimatedStyle(() => {
-    const padding = 3;
-    const translateX = interpolate(
-      animatedValue.value,
-      [0, 1],
-      [padding, width.value - height.value]
-    );
+  const trackColor = animValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [trackColors.off, trackColors.on],
+  });
 
-    const backgroundColor = interpolateColor(
-      animatedValue.value,
-      [0, 1],
-      [thumbColors.off, thumbColors.on]
-    );
-
-    return {
-      transform: [{ translateX }],
-      backgroundColor,
-      borderRadius: height.value / 2,
-    };
+  const thumbColor = animValue.interpolate({
+    inputRange: [0, 1],
+    outputRange: [thumbColors.off, thumbColors.on],
   });
 
   return (
-    <Pressable
-      onPress={onPress}
-      accessibilityRole="switch"
-      accessibilityState={{ checked: animatedValue.value === 1 }}
-    >
-      <Animated.View
-        onLayout={(e) => {
-          height.value = e.nativeEvent.layout.height;
-          width.value = e.nativeEvent.layout.width;
-        }}
-        style={[styles.track, style, trackAnimatedStyle]}
-      >
-        <Animated.View style={[styles.thumb, thumbAnimatedStyle]} />
+    <Pressable onPress={onPress} accessibilityRole="switch">
+      <Animated.View style={[styles.track, { backgroundColor: trackColor }]}>
+        <Animated.View
+          style={[
+            styles.thumb,
+            {
+              transform: [{ translateX }],
+              backgroundColor: thumbColor,
+            },
+          ]}
+        />
       </Animated.View>
     </Pressable>
   );
 };
 
+export default ToggleSwitch;
 const styles = StyleSheet.create({
   track: {
-    justifyContent: "center",
     width: 56,
     height: 30,
-    paddingHorizontal: 2,
+    borderRadius: 15,
+    paddingHorizontal: 3,
+    justifyContent: "center",
   },
   thumb: {
+    width: 24,
     height: 24,
-    aspectRatio: 1,
+    borderRadius: 12,
   },
 });
-
-export default ToggleSwitch;

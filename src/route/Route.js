@@ -23,7 +23,7 @@ function Route() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName={ROUTES.HOME}
+        // initialRouteName={ROUTES.HOME}
       >
         <Stack.Screen name={ROUTES.LOGIN} component={Login} />
         <Stack.Screen name={ROUTES.ONBOARDING} component={Onboarding} />
