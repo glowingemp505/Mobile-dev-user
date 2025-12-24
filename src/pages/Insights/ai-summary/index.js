@@ -70,9 +70,11 @@ const styles = StyleSheet.create({
 
   successText: {
     color: "#86EFAC",
+    fontFamily: fonts.bold,
   },
 
   amountText: {
     color: "#7A42D3",
+    fontFamily: fonts.bold,
   },
 });
