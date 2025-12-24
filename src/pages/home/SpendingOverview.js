@@ -42,7 +42,7 @@ const SpendingOverview = () => {
 
       <View style={styles.row}>
         <View style={styles.leftSection}>
-          <MultiColorCircle segments={dataCircle}>
+          <MultiColorCircle segments={dataCircle} STROKE_WIDTH={25} >
             <Text style={styles.total}>Totals</Text>
             <Text style={styles.totalAmount}>$3,100</Text>
           </MultiColorCircle>
