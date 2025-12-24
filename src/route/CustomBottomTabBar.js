@@ -106,7 +106,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "#000",
-    paddingBottom:20
   },
 
   tabItem: {

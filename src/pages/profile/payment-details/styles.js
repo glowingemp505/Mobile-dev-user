@@ -27,9 +27,10 @@ const styles = StyleSheet.create({
   },
 
   wrapper: {
-    flex: 1,
+    flexGrow: 1,
     paddingHorizontal: 16,
     paddingTop: 20,
+    justifyContent:"space-between"
   },
 
   paymentDetail: {

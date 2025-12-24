@@ -13,13 +13,15 @@ import { colors, commonStyles, fonts, fontSizes } from "src/utils/styles";
 import CommonLinearGradient from "src/components/CommonLinearGradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { appIcons } from "src/utils/assets";
+import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 
-const Login = ({ navigation }) => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const navigation = useNavigation();
 
   const handleTogglePassword = () => setShowPassword((prev) => !prev);
 
@@ -85,7 +87,10 @@ const Login = ({ navigation }) => {
             <Text style={styles.forgotText}>Forgot Password?</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity>
+          <TouchableOpacity
+            activeOpacity={0.5}
+            onPress={() => navigation.navigate("Home")}
+          >
             <CommonLinearGradient style={styles.signInBtn}>
               <Text style={styles.signInBtnText}>Sign In</Text>
             </CommonLinearGradient>

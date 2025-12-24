@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
   inputBox: {
     height: 56,
     backgroundColor: "#27272A",
-    borderRadius: 12,
+    borderRadius: 6,
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 16,

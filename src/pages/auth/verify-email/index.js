@@ -81,6 +81,7 @@ const VerifyEmail = () => {
           numberOfDigits={6}
           hideStick
           type="numeric"
+          secureTextEntry={true}
           onFilled={(text) => console.log("OTP:", text)}
           theme={{
             containerStyle: styles.otpContainer,

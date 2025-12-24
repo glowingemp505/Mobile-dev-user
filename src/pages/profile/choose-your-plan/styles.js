@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingTop: 10,
     flexGrow: 1,
+    paddingBottom:50
   },
   chooseLocation: {
     fontFamily: fonts.bold,

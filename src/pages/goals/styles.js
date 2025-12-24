@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#27272A",
     borderRadius: 8,
     gap: 10,
-    marginVertical: 10,
+    marginVertical: 4,
   },
   icon: {
     width: 20,

@@ -26,106 +26,108 @@ const PaymentDetails = () => {
 
       <KeyboardAwareScrollView contentContainerStyle={styles.wrapper}>
         <View>
-          <Text style={styles.paymentDetail}>Payment Details</Text>
-          <Text style={styles.secure}>Secure payment powered by Stripe</Text>
-        </View>
+          <View>
+            <Text style={styles.paymentDetail}>Payment Details</Text>
+            <Text style={styles.secure}>Secure payment powered by Stripe</Text>
+          </View>
 
-        {/* Card Preview */}
-        <CommonLinearGradient style={styles.gradientCard}>
-          <View style={styles.proTopVIew}>
-            <Image source={appIcons.pro} style={styles.proIcon} />
-            <View style={styles.proplanView}>
-              <Text style={styles.proPlanText}>Pro Plan</Text>
+          {/* Card Preview */}
+          <CommonLinearGradient style={styles.gradientCard}>
+            <View style={styles.proTopVIew}>
+              <Image source={appIcons.pro} style={styles.proIcon} />
+              <View style={styles.proplanView}>
+                <Text style={styles.proPlanText}>Pro Plan</Text>
+              </View>
+            </View>
+
+            <View style={styles.topView}>
+              {[1, 2, 3].map((_, index) => (
+                <View key={index} style={styles.rowVIew}>
+                  <View style={styles.dot} />
+                  <View style={styles.dot} />
+                  <View style={styles.dot} />
+                  <View style={styles.dot} />
+                </View>
+              ))}
+            </View>
+
+            <Text style={styles.numberstyle}>4242</Text>
+          </CommonLinearGradient>
+
+          {/* Card Number */}
+          <View style={styles.inputVIew}>
+            <Text style={styles.label}>Card Number</Text>
+            <View style={styles.inputBox}>
+              <appIcons.card />
+              <TextInput
+                style={styles.input}
+                placeholder="4242 4242 4242 4242"
+                placeholderTextColor={colors.gray}
+                keyboardType="number-pad"
+              />
             </View>
           </View>
 
-          <View style={styles.topView}>
-            {[1, 2, 3].map((_, index) => (
-              <View key={index} style={styles.rowVIew}>
-                <View style={styles.dot} />
-                <View style={styles.dot} />
-                <View style={styles.dot} />
-                <View style={styles.dot} />
-              </View>
-            ))}
+          {/* Expiry & CVC Row */}
+          <View style={styles.rowInput}>
+            {/* Expiry */}
+            <View style={styles.halfInput}>
+              <Text style={styles.label}>Expiry</Text>
+              <TextInput
+                style={styles.singleInput}
+                placeholder="MM/YY"
+                placeholderTextColor={colors.gray}
+                keyboardType="number-pad"
+              />
+            </View>
+
+            {/* CVC */}
+            <View style={styles.halfInput}>
+              <Text style={styles.label}>CVC</Text>
+              <TextInput
+                style={styles.singleInput}
+                placeholder="***"
+                placeholderTextColor={colors.gray}
+                keyboardType="number-pad"
+                secureTextEntry
+              />
+            </View>
           </View>
 
-          <Text style={styles.numberstyle}>4242</Text>
-        </CommonLinearGradient>
-
-        {/* Card Number */}
-        <View style={styles.inputVIew}>
-          <Text style={styles.label}>Card Number</Text>
-          <View style={styles.inputBox}>
-            <appIcons.card />
-            <TextInput
-              style={styles.input}
-              placeholder="4242 4242 4242 4242"
-              placeholderTextColor={colors.gray}
-              keyboardType="number-pad"
-            />
+          <View style={styles.lockText}>
+            <appIcons.lockGreen />
+            <Text style={styles.paymetScreen}>
+              Your payment is secure and encrypted
+            </Text>
           </View>
-        </View>
-
-        {/* Expiry & CVC Row */}
-        <View style={styles.rowInput}>
-          {/* Expiry */}
-          <View style={styles.halfInput}>
-            <Text style={styles.label}>Expiry</Text>
-            <TextInput
-              style={styles.singleInput}
-              placeholder="MM/YY"
-              placeholderTextColor={colors.gray}
-              keyboardType="number-pad"
-            />
-          </View>
-
-          {/* CVC */}
-          <View style={styles.halfInput}>
-            <Text style={styles.label}>CVC</Text>
-            <TextInput
-              style={styles.singleInput}
-              placeholder="***"
-              placeholderTextColor={colors.gray}
-              keyboardType="number-pad"
-              secureTextEntry
-            />
-          </View>
-        </View>
-
-        <View style={styles.lockText}>
-          <appIcons.lockGreen />
-          <Text style={styles.paymetScreen}>
-            Your payment is secure and encrypted
-          </Text>
-        </View>
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            marginVertical: 10,
-            marginTop: 20,
-          }}
-        >
-          <Text
+          <View
             style={{
-              color: colors.white,
-              fontSize: 18,
-              fontFamily: fonts.semiBold,
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              marginVertical: 10,
+              marginTop: 20,
             }}
           >
-            Pro Plan (Monthly)
-          </Text>
-          <Text
-            style={{
-              color: colors.white,
-              fontSize: 18,
-              fontFamily: fonts.semiBold,
-            }}
-          >
-            $9.99
-          </Text>
+            <Text
+              style={{
+                color: colors.white,
+                fontSize: 18,
+                fontFamily: fonts.semiBold,
+              }}
+            >
+              Pro Plan (Monthly)
+            </Text>
+            <Text
+              style={{
+                color: colors.white,
+                fontSize: 18,
+                fontFamily: fonts.semiBold,
+              }}
+            >
+              $9.99
+            </Text>
+          </View>
         </View>
 
         <TouchableOpacity onPress={() => navigation.navigate("LinkYourBank")}>

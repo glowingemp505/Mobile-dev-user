@@ -12,7 +12,7 @@ import CommonLinearGradient from "src/components/CommonLinearGradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { appIcons } from "src/utils/assets";
 import styles from "./styles";
-
+import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 
 const Signup = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -37,7 +37,7 @@ const Signup = ({ navigation }) => {
         </View>
       </TouchableOpacity>
 
-      <ScrollView
+      <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
@@ -81,6 +81,19 @@ const Signup = ({ navigation }) => {
             />
           </TouchableOpacity>
         </View>
+        {password.length !== 0 && (
+          <>
+            <View style={styles.lineRow}>
+              <View style={styles.line} />
+              <View style={styles.line} />
+              <View style={{ ...styles.line, backgroundColor: "#4B9E54" }} />
+              <View style={{ ...styles.line, backgroundColor: "#27272A" }} />
+            </View>
+            <Text style={styles.passwordStatusColor}>
+              Good password strength
+            </Text>
+          </>
+        )}
 
         {/* Confirm Password */}
         <Text style={styles.label}>Confirm Password</Text>
@@ -125,14 +138,16 @@ const Signup = ({ navigation }) => {
         </View>
 
         {/* Sign Up Button */}
-        <TouchableOpacity
-          onPress={() => navigation.navigate("VerifyEmail")}
-          activeOpacity={0.5}
-        >
-          <CommonLinearGradient style={styles.signUpBtn}>
+
+        <CommonLinearGradient style={styles.signUpBtn}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate("VerifyEmail")}
+            activeOpacity={0.5}
+            style={styles.btnStyle}
+          >
             <Text style={styles.signUpBtnText}>Create Account</Text>
-          </CommonLinearGradient>
-        </TouchableOpacity>
+          </TouchableOpacity>
+        </CommonLinearGradient>
 
         {/* Sign In */}
         <TouchableOpacity
@@ -144,7 +159,7 @@ const Signup = ({ navigation }) => {
             <Text style={{ color: colors.primary }}>Sign In</Text>
           </Text>
         </TouchableOpacity>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     </SafeAreaView>
   );
 };

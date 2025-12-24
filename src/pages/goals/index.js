@@ -144,7 +144,7 @@ const Goals = () => {
           renderItem={renderItem}
           keyExtractor={(item) => item.id}
           scrollEnabled={false}
-          contentContainerStyle={{ gap: 15, paddingBottom: 30 }}
+          contentContainerStyle={{ gap: 15, paddingBottom: 30, marginTop:15 }}
         />
       </ScrollView>
     </View>

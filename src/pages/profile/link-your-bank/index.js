@@ -100,7 +100,12 @@ const LinkYourBank = () => {
           </CommonLinearGradient>
         </TouchableOpacity>
 
-        <Text style={styles.skipForNow}>Skip for now</Text>
+        <Text
+          onPress={() => navigation.navigate("Home")}
+          style={styles.skipForNow}
+        >
+          Skip for now
+        </Text>
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );

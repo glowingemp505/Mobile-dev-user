@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     justifyContent: "center",
     alignItems: "center",
+    overflow: "hidden",
   },
   signUpBtnText: {
     fontSize: 18,
@@ -99,9 +100,8 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   checkBox: {
-    width: 16,
-    height: 16,
-    borderRadius: 2,
+    width: 18,
+    height: 18,
     justifyContent: "center",
     alignItems: "center",
     borderColor: colors.white,
@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular,
   },
   check: {
-    width: 12,
-    height: 12,
+    width: 10,
+    height: 10,
     resizeMode: "contain",
     tintColor: colors.white,
   },
@@ -123,6 +123,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     gap: 10,
     marginTop: 15,
+  },
+  btnStyle: {
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  line: {
+    height: 4,
+    borderRadius: 100,
+    backgroundColor: "#6137D1",
+    width: "22%",
+  },
+  lineRow: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 10,
+    height: 10,
+  },
+  passwordStatusColor: {
+    color: "#4B9E54",
+    fontFamily: fonts.regular,
+    fontSize: 14,
+    marginTop: 5,
   },
 });
 

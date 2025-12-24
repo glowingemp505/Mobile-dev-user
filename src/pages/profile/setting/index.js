@@ -33,8 +33,8 @@ const Settings = () => {
   const navigation = useNavigation();
 
   const [toggles, setToggles] = useState({
-    darkMode: false,
-    notifications: false,
+    darkMode: true,
+    notifications: true,
     biometric: false,
   });
 
@@ -104,7 +104,7 @@ const Settings = () => {
         {/* Account */}
         <Text style={styles.prefrances}>ACCOUNT</Text>
 
-        <View style={styles.cardStyle}>
+        <TouchableOpacity activeOpacity={0.5} style={styles.cardStyle}>
           <View style={styles.leftArrow}>
             <appIcons.globefilled />
             <Text style={styles.title}>Language</Text>
@@ -113,9 +113,9 @@ const Settings = () => {
             <Text style={styles.rightButton}>English</Text>
             <appIcons.rightgray />
           </View>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.cardStyle}>
+        <TouchableOpacity activeOpacity={0.5} style={styles.cardStyle}>
           <View style={styles.leftArrow}>
             <appIcons.theme />
             <Text style={styles.title}>Theme</Text>
@@ -124,9 +124,9 @@ const Settings = () => {
             <Text style={styles.rightButton}>Dark</Text>
             <appIcons.rightgray />
           </View>
-        </View>
+        </TouchableOpacity>
 
-        <View style={styles.cardStyle}>
+        <TouchableOpacity activeOpacity={0.5} style={styles.cardStyle}>
           <View style={styles.leftArrow}>
             <appIcons.db />
             <Text style={styles.title}>Data & Storage</Text>
@@ -135,18 +135,18 @@ const Settings = () => {
             <Text style={styles.rightButton}>1.2 GB</Text>
             <appIcons.rightgray />
           </View>
-        </View>
+        </TouchableOpacity>
 
         {/* About */}
         <Text style={styles.prefrances}>ABOUT</Text>
 
-        <View style={styles.cardStyle}>
+        <TouchableOpacity   activeOpacity={0.5} style={styles.cardStyle}>
           <View style={styles.leftArrow}>
             <appIcons.info />
             <Text style={styles.title}>App Version</Text>
           </View>
           <Text style={styles.rightButton}>1.2.0</Text>
-        </View>
+        </TouchableOpacity>
 
         <Text style={styles.spendNest}>
           SpendNest v1.0.0{"\n"}© 2024 All rights reserved

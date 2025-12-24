@@ -97,7 +97,13 @@ const ChooseYourPlan = () => {
         <View style={{ marginTop: 10 }}>
           {item.features.map((feature, index) => (
             <View style={styles.featureRow} key={index}>
-              {isSelected ? <appIcons.primaryCheck /> : <appIcons.checkGreen />}
+              <View style={{marginTop:2}} >
+                {isSelected ? (
+                  <appIcons.primaryCheck />
+                ) : (
+                  <appIcons.checkGreen />
+                )}
+              </View>
               <Text style={styles.featureText}>{feature}</Text>
             </View>
           ))}

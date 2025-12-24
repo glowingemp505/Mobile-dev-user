@@ -41,7 +41,7 @@ const Profile = () => {
       title: "Payment methods",
       subtitle: "Manage cards & accounts",
       icon: appIcons.cardWhite,
-      route: "PaymentMethods",
+      // route: "ChooseYourPlan",
       type: "normal",
     },
     {
