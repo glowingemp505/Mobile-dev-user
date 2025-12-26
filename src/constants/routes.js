@@ -10,4 +10,7 @@ export const ROUTES = {
   YoureAllSet: "YoureAllSet",
   HOME: "Home",
   Settings: "Settings",
+  ForgotPassword: "ForgotPassword",
+  ResetPassword: "ResetPassword",
+  Notifications: "Notifications",
 };

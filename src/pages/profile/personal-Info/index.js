@@ -54,9 +54,9 @@ const PersonalInfo = () => {
   };
 
   const incomeData = [
-    { label: "$5,500 - $8,000", value: "5500-8000" },
-    { label: "$8,500 - $9,500", value: "8500-9500" },
-    { label: "$10,000 - $12,000", value: "10000-12000" },
+    { label: "5,500 - 8,000", value: "5500-8000" },
+    { label: "8,500 - 9,500", value: "8500-9500" },
+    { label: "10,000 - 12,000", value: "10000-12000" },
   ];
 
   const currencyData = [
@@ -67,9 +67,9 @@ const PersonalInfo = () => {
   ];
 
   const budgetData = [
-    { label: "$1,000 - $2,500", value: "1000-2500" },
-    { label: "$2,500 - $5,000", value: "2500-5000" },
-    { label: "$5,000 - $7,500", value: "5000-7500" },
+    { label: "1,000 - 2,500", value: "1000-2500" },
+    { label: "2,500 - 5,000", value: "2500-5000" },
+    { label: "5,000 - 7,500", value: "5000-7500" },
   ];
 
   return (
@@ -124,10 +124,12 @@ const PersonalInfo = () => {
           <Text style={styles.title}>Monthly Income</Text>
           <CustomDropDown
             data={incomeData}
-            placeholder="$5,000 - $7,500"
+            placeholder="5,000 - 7,500"
             value={incomeValue}
             onSelect={setIncomeValue}
-            leftIcon={<appIcons.dollar />}
+            leftIcon={
+              <Image source={appIcons.dollarupdate} style={styles.dollarSign} />
+            }
             rightIcon={<appIcons.down />}
           />
         </View>
@@ -150,7 +152,7 @@ const PersonalInfo = () => {
           <Text style={styles.title}>Monthly Budget Goal</Text>
           <CustomDropDown
             data={budgetData}
-            placeholder="$1,000 - $2,500"
+            placeholder="1,000 - 2,500"
             value={budgetValue}
             onSelect={setBudgetValue}
             leftIcon={<appIcons.target />}

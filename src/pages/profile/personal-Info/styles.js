@@ -23,6 +23,12 @@ const styles = StyleSheet.create({
     height: 18,
     resizeMode: "contain",
   },
+  dollarSign : {
+    width: 18,
+    height: 18,
+    resizeMode: "contain",
+    tintColor: colors.gray
+  },
 
   topCircle: {
     width: 40,

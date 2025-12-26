@@ -2,7 +2,7 @@ import { Image, Text, TouchableOpacity, View } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./styles";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { appIcons } from "src/utils/assets";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { OtpInput } from "react-native-otp-entry";
@@ -12,6 +12,8 @@ const OTP_TIME = 60;
 
 const VerifyEmail = () => {
   const navigation = useNavigation();
+  const routes = useRoute();
+  const { routeName } = routes?.params || "";
 
   const [seconds, setSeconds] = useState(OTP_TIME);
   const [isRunning, setIsRunning] = useState(true);
@@ -37,7 +39,11 @@ const VerifyEmail = () => {
   const handleVerify = () => {
     clearInterval(timerRef.current);
     setIsRunning(false);
-    navigation.navigate("PersonalInfo");
+    if (routeName === "ForgotPassword") {
+      navigation.navigate("ResetPassword");
+    } else {
+      navigation.navigate("PersonalInfo");
+    }
   };
 
   const handleResend = () => {

@@ -141,7 +141,11 @@ const Signup = ({ navigation }) => {
 
         <CommonLinearGradient style={styles.signUpBtn}>
           <TouchableOpacity
-            onPress={() => navigation.navigate("VerifyEmail")}
+            onPress={() =>
+              navigation.navigate("VerifyEmail", {
+                routeName: "signup",
+              })
+            }
             activeOpacity={0.5}
             style={styles.btnStyle}
           >

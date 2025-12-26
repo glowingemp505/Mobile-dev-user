@@ -84,6 +84,7 @@ const appIcons = {
   alert: require("@assets/icons/alert.png"),
   reddown: require("@assets/icons/reddown.png"),
   popularStar: require("@assets/icons/popularStar.png"),
+  dollarupdate: require("@assets/icons/dollarupdate.png"),
   success: SuccessIcon,
   error: ErrorIcon,
   user: User,

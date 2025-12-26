@@ -20,13 +20,6 @@ const ChooseYourPlan = () => {
 
   const plans = [
     {
-      id: "free",
-      title: "Free",
-      price: 0,
-      priceLabel: "/mo",
-      features: ["2 Bank accounts", "Basic insights", "Monthly reports"],
-    },
-    {
       id: "pro",
       title: "Pro",
       price: 9.99,
@@ -130,7 +123,7 @@ const ChooseYourPlan = () => {
         />
 
         <TouchableOpacity
-          onPress={() => navigation.navigate("PaymentDetails")}
+          onPress={() => navigation.navigate("LinkYourBank")}
           activeOpacity={0.8}
         >
           <CommonLinearGradient style={styles.signInBtn}>
