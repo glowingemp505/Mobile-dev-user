@@ -140,7 +140,7 @@ const Settings = () => {
         {/* About */}
         <Text style={styles.prefrances}>ABOUT</Text>
 
-        <TouchableOpacity   activeOpacity={0.5} style={styles.cardStyle}>
+        <TouchableOpacity activeOpacity={0.5} style={styles.cardStyle}>
           <View style={styles.leftArrow}>
             <appIcons.info />
             <Text style={styles.title}>App Version</Text>

@@ -15,9 +15,11 @@ import CommonLinearGradient from "src/components/CommonLinearGradient";
 import { colors } from "src/utils/styles";
 import { appIcons } from "src/utils/assets";
 import SpendingOverview from "./SpendingOverview";
+import { useNavigation } from "@react-navigation/native";
 
 const Home = () => {
   const insets = useSafeAreaInsets();
+  const navigation = useNavigation();
 
   const data = [
     { id: 1, color: "#1C0F34", title: "Add", icon: appIcons.addPrimay },
@@ -142,7 +144,12 @@ const Home = () => {
         <View>
           <View style={styles.row}>
             <Text style={styles.recent}>Recent Transactions</Text>
-            <Text style={styles.seeAll}>See all</Text>
+            <Text
+              onPress={() => navigation.navigate("AllTransactions")}
+              style={styles.seeAll}
+            >
+              See all
+            </Text>
           </View>
           <FlatList
             data={sections}

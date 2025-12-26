@@ -43,12 +43,16 @@ import db from "@assets/icons/db.svg";
 import info from "@assets/icons/info.svg";
 import add from "@assets/icons/add.svg";
 import righFull from "@assets/icons/righFull.svg";
+import trash from "@assets/icons/trash.svg";
 
 const appImages = {
   Onboarding_1: require("@assets/onboarding/onboarding1.png"),
   Onboarding_2: require("@assets/onboarding/onboarding2.png"),
   Onboarding_3: require("@assets/onboarding/onboarding3.png"),
   Onboarding_4: require("@assets/onboarding/onboarding4.png"),
+
+  delImage: require("@assets/images/deleteImage.png"),
+  logoutImage: require("../../../assets/images/logoutImage.png"),
 };
 
 const appIcons = {
@@ -131,6 +135,7 @@ const appIcons = {
   info,
   add,
   righFull,
+  trash,
 };
 
 export { appImages, appIcons };

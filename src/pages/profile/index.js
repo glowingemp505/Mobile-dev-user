@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   FlatList,
   Image,
@@ -14,12 +14,16 @@ import {
 import { useNavigation } from "@react-navigation/native";
 
 import styles from "./styles";
-import { appIcons } from "src/utils/assets";
+import { appIcons, appImages } from "src/utils/assets";
 import CommonLinearGradient from "src/components/CommonLinearGradient";
+import GeneralModal from "src/components/GeneralModal";
 
 const Profile = () => {
   const navigation = useNavigation();
   const insets = useSafeAreaInsets();
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState(null); // "logout" | "delete"
 
   const statusData = [
     { id: 1, title: "Accounts", number: 3 },
@@ -36,14 +40,6 @@ const Profile = () => {
       route: "EditProfile",
       type: "normal",
     },
-    // {
-    //   id: "2",
-    //   title: "Payment methods",
-    //   subtitle: "Manage cards & accounts",
-    //   icon: appIcons.cardWhite,
-    //   // route: "ChooseYourPlan",
-    //   type: "normal",
-    // },
     {
       id: "3",
       title: "Linked Banks",
@@ -51,7 +47,7 @@ const Profile = () => {
       icon: appIcons.bankwhite,
       route: "LinkYourBank",
       type: "normal",
-      routeName:"settingScreen"
+      routeName: "settingScreen",
     },
     {
       id: "4",
@@ -61,22 +57,6 @@ const Profile = () => {
       route: "Notifications",
       type: "normal",
     },
-    // {
-    //   id: "5",
-    //   title: "Security",
-    //   subtitle: "Password & 2FA",
-    //   icon: appIcons.shieldWhite,
-    //   route: "Security",s
-    //   type: "normal",
-    // },
-    // {
-    //   id: "6",
-    //   title: "Preferences",
-    //   subtitle: "App Settings",
-    //   icon: appIcons.setting,
-    //   route: "Settings",
-    //   type: "normal",
-    // },
     {
       id: "7",
       title: "Help & Support",
@@ -87,49 +67,62 @@ const Profile = () => {
     },
     {
       id: "8",
-      title: "Help & Support",
+      title: "Logout",
       icon: appIcons.logout,
-      route: "Logout",
+      subtitle: "Sign out now",
+      type: "danger",
+    },
+    {
+      id: "9",
+      title: "Delete Account",
+      icon: appIcons.trash,
+      subtitle: "Permanent removal",
       type: "danger",
     },
   ];
 
-  const renderStatusItem = ({ item }) => {
-    return (
-      <View style={styles.box}>
-        <Text
-          style={[
-            styles.number,
-            item.title === "On Budget" && { color: "#22C55E" },
-          ]}
-        >
-          {item.number}
-        </Text>
-        <Text style={styles.titleStyle}>{item.title}</Text>
-      </View>
-    );
-  };
+  const renderStatusItem = ({ item }) => (
+    <View style={styles.box}>
+      <Text
+        style={[
+          styles.number,
+          item.title === "On Budget" && { color: "#22C55E" },
+        ]}
+      >
+        {item.number}
+      </Text>
+      <Text style={styles.titleStyle}>{item.title}</Text>
+    </View>
+  );
 
   const renderItem = ({ item }) => {
-    const Icon = item.icon;
-    const logoutType = item.type === "danger";
+    const isDanger = item.type === "danger";
 
     return (
       <TouchableOpacity
-        style={[styles.card, logoutType && styles.dangerCard]}
-        onPress={() => navigation.navigate(item.route)}
+        style={[styles.card, isDanger && styles.dangerCard]}
         activeOpacity={0.8}
+        onPress={() => {
+          if (isDanger) {
+            setModalType(item.title === "Logout" ? "logout" : "delete");
+            setShowModal(true);
+          } else {
+            navigation.navigate(item.route, {
+              routeName: item.routeName,
+            });
+          }
+        }}
       >
         <View style={styles.leftRow}>
-          {<item.icon />}
+          <item.icon />
           <View style={{ gap: 5 }}>
-            <Text style={[styles.titleStyle, logoutType && styles.dangerText]}>
+            <Text style={[styles.titleStyle, isDanger && styles.dangerText]}>
               {item.title}
             </Text>
             <Text style={styles.subtitle}>{item.subtitle}</Text>
           </View>
         </View>
-        {item.type !== "danger" && <appIcons.right />}
+        {!isDanger && <appIcons.right />}
       </TouchableOpacity>
     );
   };
@@ -141,6 +134,7 @@ const Profile = () => {
         { paddingTop: insets.top > 0 ? insets.top + 5 : 20 },
       ]}
     >
+      {/* Back Button */}
       <TouchableOpacity
         style={styles.backBtn}
         onPress={() => navigation.goBack()}
@@ -189,9 +183,35 @@ const Profile = () => {
           keyExtractor={(item) => item.id}
           scrollEnabled={false}
           style={{ width: "100%", paddingHorizontal: 16 }}
-          contentContainerStyle={{ width: "100%" }}
         />
       </ScrollView>
+
+      <GeneralModal
+        modalSuccess={showModal}
+        modalError={false}
+        Set_Modal_Visibilty={setShowModal}
+        imageSource={
+          modalType === "logout" ? appImages.logoutImage : appImages.delImage
+        }
+        title={modalType === "logout" ? "Logout" : "Delete Account"}
+        description={
+          modalType === "logout"
+            ? "Are you sure you want to logout from your account?"
+            : "This action will permanently delete your account. This cannot be undone."
+        }
+        yesBtnTitle={modalType === "logout" ? "Logout" : "Delete"}
+        noBtnTitle="Cancel"
+        handleYesPress={() => {
+          setShowModal(false);
+
+          if (modalType === "logout") {
+            console.log("User Logged Out");
+          } else {
+            console.log("Account Deleted");
+          }
+        }}
+        handleNoPress={() => setShowModal(false)}
+      />
     </View>
   );
 };

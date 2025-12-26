@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import React from "react";
 import { colors, fonts } from "src/utils/styles";
 
 const styles = StyleSheet.create({
@@ -35,21 +36,6 @@ const styles = StyleSheet.create({
     resizeMode: "contain",
   },
 
-  title: {
-    color: colors.white,
-    fontSize: 18,
-    fontFamily: fonts.semiBold,
-  },
-
-  bellButton: {
-    backgroundColor: "#1A1C1F",
-    width: 42,
-    height: 42,
-    borderRadius: 21,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-
   notificationDot: {
     position: "absolute",
     right: 6,
@@ -59,43 +45,49 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     backgroundColor: "#DD2E44",
   },
-
-  notificationItem: {
-    flexDirection: "row",
+  todayCard: {
     backgroundColor: "#27272A",
-    borderRadius: 12,
-    padding: 14,
-    marginBottom: 12,
-  },
-
-  notificationIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: "#1A1C1F",
-    justifyContent: "center",
+    paddingVertical: 15,
+    paddingHorizontal: 16,
+    flexDirection: "row",
     alignItems: "center",
-    marginRight: 12,
+    justifyContent: "space-between",
+    marginBottom: 10,
+    borderRadius: 10,
+    marginVertical: 10,
   },
 
-  notificationTitle: {
+  todayLeft: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
+  },
+
+  todayIcon: {
+    width: 30,
+    height: 30,
+    resizeMode: "contain",
+  },
+
+  todayTextWrapper: {
+    gap: 4,
+  },
+  todayTitle: {
     color: colors.white,
-    fontSize: 14,
-    fontFamily: fonts.medium,
-    marginBottom: 4,
-  },
-
-  notificationDesc: {
-    color: "#A1A1AA",
-    fontSize: 12,
     fontFamily: fonts.regular,
+    fontSize: 16,
   },
 
-  timeText: {
-    color: "#71717A",
-    fontSize: 11,
-    marginTop: 6,
+  todayTime: {
+    color: "#9CA3AF",
+    fontFamily: fonts.regular,
+    fontSize: 14,
+  },
+
+  todayAmount: {
+    color: colors.white,
+    fontFamily: fonts.bold,
+    fontSize: 14,
   },
 });
-
 export default styles;

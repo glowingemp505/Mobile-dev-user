@@ -15,7 +15,7 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { colors } from "src/utils/styles";
 import CommonLinearGradient from "src/components/CommonLinearGradient";
 
-const ResetPassword = () => {
+const ChangesPassword = () => {
   const navigation = useNavigation();
 
   const [password, setPassword] = useState("");
@@ -38,7 +38,6 @@ const ResetPassword = () => {
           <Image source={appIcons.leftArrow} style={styles.backIcon} />
         </View>
       </TouchableOpacity>
-
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
@@ -111,10 +110,7 @@ const ResetPassword = () => {
             <TouchableOpacity
               activeOpacity={0.5}
               onPress={() => {
-                navigation.reset({
-                  index: 0,
-                  routes: [{ name: "Login" }],
-                });
+                navigation.goBack();
               }}
             >
               <CommonLinearGradient style={styles.signInBtn}>
@@ -128,4 +124,4 @@ const ResetPassword = () => {
   );
 };
 
-export default ResetPassword;
+export default ChangesPassword;

@@ -13,4 +13,7 @@ export const ROUTES = {
   ForgotPassword: "ForgotPassword",
   ResetPassword: "ResetPassword",
   Notifications: "Notifications",
+  AllTransactions: "AllTransactions",
+  EditProfile: "EditProfile",
+  ChangesPassword: "ChangesPassword",
 };

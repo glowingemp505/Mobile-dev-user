@@ -18,6 +18,9 @@ import Settings from "src/pages/profile/setting";
 import ForgotPassword from "src/pages/auth/forgot-password";
 import ResetPassword from "src/pages/auth/reset-password";
 import Notifications from "src/pages/notifications";
+import AllTransactions from "src/pages/home/All-transactions";
+import EditProfile from "src/pages/profile/edit-profile";
+import ChangesPassword from "src/pages/profile/change-password";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +45,15 @@ function Route() {
         <Stack.Screen name={ROUTES.HOME} component={CustomBottomTabBar} />
         <Stack.Screen name={ROUTES.Settings} component={Settings} />
         <Stack.Screen name={ROUTES.Notifications} component={Notifications} />
+        <Stack.Screen name={ROUTES.EditProfile} component={EditProfile} />
+        <Stack.Screen
+          name={ROUTES.ChangesPassword}
+          component={ChangesPassword}
+        />
+        <Stack.Screen
+          name={ROUTES.AllTransactions}
+          component={AllTransactions}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

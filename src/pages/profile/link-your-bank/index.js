@@ -13,12 +13,16 @@ import { appIcons } from "src/utils/assets";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { colors } from "src/utils/styles";
 import CommonLinearGradient from "src/components/CommonLinearGradient";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const LinkYourBank = () => {
   const [selectBank, setSelectBank] = useState(null);
   const navigation = useNavigation();
+  const route = useRoute();
+  const { routeName } = route?.params || "";
+  const settingScreen = routeName === "settingScreen";
 
+  console.log(routeName, "routeName");
   const data = [
     { id: 1, name: "Search bank" },
     { id: 2, name: "Bank Of America" },
@@ -48,7 +52,14 @@ const LinkYourBank = () => {
       </TouchableOpacity>
     );
   };
-
+  //
+  const handleCardPress = () => {
+    if (settingScreen) {
+      navigation.goBack();
+    } else {
+      navigation.navigate("YoureAllSet");
+    }
+  };
   return (
     <SafeAreaView style={styles.container}>
       <TouchableOpacity
@@ -91,21 +102,20 @@ const LinkYourBank = () => {
             Bank-level encryption • Read-only access
           </Text>
         </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("YoureAllSet")}
-          activeOpacity={0.5}
-        >
+        <TouchableOpacity onPress={handleCardPress} activeOpacity={0.5}>
           <CommonLinearGradient style={styles.signInBtn}>
             <Text style={styles.connect}>Connect Selected Bank</Text>
           </CommonLinearGradient>
         </TouchableOpacity>
 
-        <Text
-          onPress={() => navigation.navigate("Home")}
-          style={styles.skipForNow}
-        >
-          Skip for now
-        </Text>
+        {!settingScreen && (
+          <Text
+            onPress={() => navigation.navigate("Home")}
+            style={styles.skipForNow}
+          >
+            Skip for now
+          </Text>
+        )}
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );
