@@ -1,51 +1,51 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
 // Define primary colors
 export const colors = {
-  lightgrayApp: '#E4E4E4',
-  primary: '#A855F7',
-  secondary: '#EEF8FF',
-  background: '#FFFFFF',
-  black: '#000000',
-  white: '#FFFFFF',
-  red: '#ea0014',
-  gray: '#a4a4a4',
-  graycustom: '#1B1A1D',
-  darkGrey: '#C2C2C2',
-  darkGrey2: '#000000b3',
+  lightgrayApp: "#E4E4E4",
+  primary: "#A855F7",
+  secondary: "#EEF8FF",
+  background: "#FFFFFF",
+  black: "#000000",
+  white: "#FFFFFF",
+  red: "#ea0014",
+  gray: "#a4a4a4",
+  graycustom: "#1B1A1D",
+  darkGrey: "#C2C2C2",
+  darkGrey2: "#000000b3",
 
-  lightGrey: '#88888A',
-  borderColor: '#0000001a',
-  placeholderGrey: '#A7A7A7',
-  btnDissmiss: '#909090',
-  msgGreyBg: '#F2F4F5',
-  linecolor: '#D6D6D6',
-  lighttext: '#9e9e9e',
-  lightPrimary: '#ffffff33',
-  lighttext2: '#626262',
-  lightWaring: '#FFF4F4',
-  warning: '#E31837',
-  categoryBackground: '#F0FBFF',
-  iconGray: '#92887796',
-  yellow: '#ffb134',
-  line: '#0000001a',
-  unSelectTag: '#eaeaea',
-  lightbackground: '#f9f9ff',
-  green: '#02C70D',
-  skin: '#FFEEC7',
-  skyblue: '#DBF4FF',
-  switchcolor: '#D6F3FF',
-  whiteBackground: '#f9f9ff',
-  BlackBackground: '#000000',
-  lightBlack: '#1B1A1D',
-  lightGray2: '#2929291a',
-  lightGray3: '#00000033',
-  logobordercolor: '#575760',
-  whiteBackgroundlight: '#f9f9ff',
-  line: '#D9D9D9',
-  logoBorderColor2: '#e3e3e866',
-  lightBlack2: '#444148',
-  textColor: '#ffffff',
+  lightGrey: "#88888A",
+  borderColor: "#0000001a",
+  placeholderGrey: "#A7A7A7",
+  btnDissmiss: "#909090",
+  msgGreyBg: "#F2F4F5",
+  linecolor: "#D6D6D6",
+  lighttext: "#9e9e9e",
+  lightPrimary: "#ffffff33",
+  lighttext2: "#626262",
+  lightWaring: "#FFF4F4",
+  warning: "#E31837",
+  categoryBackground: "#F0FBFF",
+  iconGray: "#92887796",
+  yellow: "#ffb134",
+  line: "#0000001a",
+  unSelectTag: "#eaeaea",
+  lightbackground: "#f9f9ff",
+  green: "#02C70D",
+  skin: "#FFEEC7",
+  skyblue: "#DBF4FF",
+  switchcolor: "#D6F3FF",
+  whiteBackground: "#f9f9ff",
+  BlackBackground: "#000000",
+  lightBlack: "#1B1A1D",
+  lightGray2: "#2929291a",
+  lightGray3: "#00000033",
+  logobordercolor: "#575760",
+  whiteBackgroundlight: "#f9f9ff",
+  line: "#D9D9D9",
+  logoBorderColor2: "#e3e3e866",
+  lightBlack2: "#444148",
+  textColor: "#ffffff",
 };
 
 // Define common font sizes
@@ -62,14 +62,14 @@ export const fontSizes = {
 };
 
 export const fonts = {
-  black: Platform.OS === "android" ? 'Inter-18pt-Black' : 'Inter18pt-Black',
-  bold: Platform.OS === "android" ? 'Inter-18pt-Bold' : 'Inter18pt-Bold',
-  semiBold: Platform.OS === "android" ? 'Inter-18pt-SemiBold' : 'Inter18pt-SemiBold',
-  medium: Platform.OS === "android" ? 'Inter-18pt-Medium' : 'Inter18pt-Medium',
-  regular: Platform.OS === "android" ? 'Inter-18pt-Regular' : 'Inter18pt-Regular',
+  black: Platform.OS === "android" ? "Inter-18pt-Black" : "Inter18pt-Black",
+  bold: Platform.OS === "android" ? "Inter-18pt-Bold" : "Inter18pt-Bold",
+  semiBold:
+    Platform.OS === "android" ? "Inter-18pt-SemiBold" : "Inter18pt-SemiBold",
+  medium: Platform.OS === "android" ? "Inter-18pt-Medium" : "Inter18pt-Medium",
+  regular:
+    Platform.OS === "android" ? "Inter-18pt-Regular" : "Inter18pt-Regular",
 };
-
-
 
 export const commonStyles = StyleSheet.create({
   container: {
@@ -86,7 +86,7 @@ export const commonStyles = StyleSheet.create({
   },
   linkSmallText: {
     fontSize: fontSizes.xSmall,
-    color: '#9CA3AF',
+    color: "#9CA3AF",
     fontFamily: fonts.regular,
   },
   text: {
@@ -103,21 +103,21 @@ export const commonStyles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     backgroundColor: colors.red,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnContainer: {
     height: 50,
     borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnText: {
     fontFamily: fonts.bold,
     fontSize: fontSizes.medium,
   },
   btnDismissContainer: {
-    alignSelf: 'center',
+    alignSelf: "center",
   },
   btnDismissText: {
     color: colors.background,
@@ -134,10 +134,10 @@ export const commonStyles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: colors.primary,
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    width: '100%',
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "center",
+    width: "100%",
   },
   btnOutlineText: {
     color: colors.primary,
@@ -147,21 +147,28 @@ export const commonStyles = StyleSheet.create({
     height: 50,
     borderRadius: 10,
     backgroundColor: colors.grey,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   btnTextDisable: {
     color: colors.black,
     fontFamily: fonts.regular,
   },
-  commonButton : {
+  commonButton: {
     marginTop: 24,
     height: 60,
     borderRadius: 16,
     justifyContent: "center",
     alignItems: "center",
-    width:"100%"
-  }
+    width: "100%",
+  },
+  errorText: {
+    color: colors.red,
+    fontSize: 12,
+    marginTop: 4,
+    marginBottom: 4,
+    fontFamily: fontSizes.regular,
+  },
 });
 
 export default {

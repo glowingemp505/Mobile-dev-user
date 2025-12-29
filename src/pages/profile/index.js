@@ -23,7 +23,7 @@ const Profile = () => {
   const insets = useSafeAreaInsets();
 
   const [showModal, setShowModal] = useState(false);
-  const [modalType, setModalType] = useState(null); // "logout" | "delete"
+  const [modalType, setModalType] = useState(null); 
 
   const statusData = [
     { id: 1, title: "Accounts", number: 3 },
@@ -134,7 +134,6 @@ const Profile = () => {
         { paddingTop: insets.top > 0 ? insets.top + 5 : 20 },
       ]}
     >
-      {/* Back Button */}
       <TouchableOpacity
         style={styles.backBtn}
         onPress={() => navigation.goBack()}
@@ -202,6 +201,10 @@ const Profile = () => {
         yesBtnTitle={modalType === "logout" ? "Logout" : "Delete"}
         noBtnTitle="Cancel"
         handleYesPress={() => {
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "Login" }],
+          });
           setShowModal(false);
 
           if (modalType === "logout") {

@@ -6,24 +6,29 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styles from "./styles";
 import { useNavigation } from "@react-navigation/native";
 import { appIcons } from "src/utils/assets";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
-import { colors } from "src/utils/styles";
+import { colors, commonStyles } from "src/utils/styles";
 import CustomDropDown from "src/components/CustomDropDown";
 import CommonLinearGradient from "src/components/CommonLinearGradient";
+import { Formik } from "formik";
+import * as Yup from "yup";
+
+// Validation schema using Yup
+const personalInfoValidationSchema = Yup.object().shape({
+  fullName: Yup.string().required("Full Name is required"),
+  incomeValue: Yup.string().required("Monthly Income is required"),
+  currencyValue: Yup.string().required("Currency is required"),
+  budgetValue: Yup.string().required("Monthly Budget Goal is required"),
+  selectedTab: Yup.number().required("Please select a primary category"),
+});
 
 const PersonalInfo = () => {
   const navigation = useNavigation();
-  const [fullName, setfullName] = useState("");
-
-  const [incomeValue, setIncomeValue] = useState();
-  const [currencyValue, setCurrencyValue] = useState();
-  const [budgetValue, setBudgetValue] = useState();
-  const [selectedTab, setselectedTab] = useState();
 
   const categoryData = [
     { id: 1, title: "Next" },
@@ -32,26 +37,6 @@ const PersonalInfo = () => {
     { id: 4, title: "Shopping" },
     { id: 5, title: "Entertainment" },
   ];
-
-  const renderItem = ({ item }) => {
-    const selectedTabItem = item.id === selectedTab;
-    return (
-      <TouchableOpacity
-        onPress={() => setselectedTab(item.id)}
-        activeOpacity={0.5}
-        style={[styles.tab, selectedTabItem && styles.selectedTabStyle]}
-      >
-        <Text
-          style={[
-            styles.title,
-            selectedTabItem && styles.selectedTabTitleStyle,
-          ]}
-        >
-          {item.title}
-        </Text>
-      </TouchableOpacity>
-    );
-  };
 
   const incomeData = [
     { label: "5,500 - 8,000", value: "5500-8000" },
@@ -74,114 +59,200 @@ const PersonalInfo = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.wrapper}>
-        <View style={styles.topRow}>
-          <TouchableOpacity
-            activeOpacity={0.6}
-            style={styles.topCircle}
-            onPress={() => navigation.goBack()}
-          >
-            <Image source={appIcons.leftArrow} style={styles.leftArrow} />
-          </TouchableOpacity>
-          <View style={styles.progressRow}>
-            <View style={styles.bar} />
-            <View style={styles.bar} />
-            <View style={styles.barUnFill} />
-          </View>
-          <View style={styles.empty} />
-        </View>
-      </View>
-
-      <KeyboardAwareScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.scrollContent}
-        keyboardShouldPersistTaps="handled"
+      <Formik
+        initialValues={{
+          fullName: "",
+          incomeValue: "",
+          currencyValue: "",
+          budgetValue: "",
+          selectedTab: null,
+        }}
+        validationSchema={personalInfoValidationSchema}
+        onSubmit={(values) => {
+          console.log("Personal Info Submitted:", values);
+          navigation.navigate("ChooseYourPlan");
+        }}
       >
-        <View style={styles.headingAndSub}>
-          <Text style={styles.heading}>Personal Info</Text>
-          <Text style={styles.subHeading}>
-            Help us personalize your experience
-          </Text>
-        </View>
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          setFieldValue,
+          handleSubmit,
+          isValid,
+        }) => {
+          const renderItem = ({ item }) => {
+            const selectedTabItem = item.id === values.selectedTab;
+            return (
+              <TouchableOpacity
+                onPress={() => setFieldValue("selectedTab", item.id)}
+                activeOpacity={0.5}
+                style={[styles.tab, selectedTabItem && styles.selectedTabStyle]}
+              >
+                <Text
+                  style={[
+                    styles.title,
+                    selectedTabItem && styles.selectedTabTitleStyle,
+                  ]}
+                >
+                  {item.title}
+                </Text>
+              </TouchableOpacity>
+            );
+          };
 
-        {/* Full Name */}
-        <View style={styles.inputView}>
-          <Text style={styles.title}>Full Name</Text>
-          <View style={styles.inputBox}>
-            <appIcons.user />
-            <TextInput
-              style={styles.input}
-              placeholder="John Doe"
-              placeholderTextColor={colors.gray}
-              value={fullName}
-              onChangeText={setfullName}
-            />
-          </View>
-        </View>
+          return (
+            <>
+              <View style={styles.wrapper}>
+                <View style={styles.topRow}>
+                  <TouchableOpacity
+                    activeOpacity={0.6}
+                    style={styles.topCircle}
+                    onPress={() => navigation.goBack()}
+                  >
+                    <Image
+                      source={appIcons.leftArrow}
+                      style={styles.leftArrow}
+                    />
+                  </TouchableOpacity>
+                  <View style={styles.progressRow}>
+                    <View style={styles.bar} />
+                    <View style={styles.bar} />
+                    <View style={styles.barUnFill} />
+                  </View>
+                  <View style={styles.empty} />
+                </View>
+              </View>
 
-        {/* Monthly Income */}
-        <View style={styles.inputView}>
-          <Text style={styles.title}>Monthly Income</Text>
-          <CustomDropDown
-            data={incomeData}
-            placeholder="5,000 - 7,500"
-            value={incomeValue}
-            onSelect={setIncomeValue}
-            leftIcon={
-              <Image source={appIcons.dollarupdate} style={styles.dollarSign} />
-            }
-            rightIcon={<appIcons.down />}
-          />
-        </View>
+              <KeyboardAwareScrollView
+                showsVerticalScrollIndicator={false}
+                contentContainerStyle={styles.scrollContent}
+                keyboardShouldPersistTaps="handled"
+              >
+                <View style={styles.headingAndSub}>
+                  <Text style={styles.heading}>Personal Info</Text>
+                  <Text style={styles.subHeading}>
+                    Help us personalize your experience
+                  </Text>
+                </View>
 
-        {/* Currency */}
-        <View style={styles.inputView}>
-          <Text style={styles.title}>Currency</Text>
-          <CustomDropDown
-            data={currencyData}
-            placeholder="USD - $"
-            value={currencyValue}
-            onSelect={setCurrencyValue}
-            leftIcon={<appIcons.globe />}
-            rightIcon={<appIcons.down />}
-          />
-        </View>
+                {/* Full Name */}
+                <View style={styles.inputView}>
+                  <Text style={styles.title}>Full Name</Text>
+                  <View style={styles.inputBox}>
+                    <appIcons.user />
+                    <TextInput
+                      style={styles.input}
+                      placeholder="John Doe"
+                      placeholderTextColor={colors.gray}
+                      value={values.fullName}
+                      onChangeText={handleChange("fullName")}
+                      onBlur={handleBlur("fullName")}
+                    />
+                  </View>
+                  {touched.fullName && errors.fullName && (
+                    <Text style={commonStyles.errorText}>
+                      {errors.fullName}
+                    </Text>
+                  )}
+                </View>
 
-        {/* Monthly Budget Goal */}
-        <View style={styles.inputView}>
-          <Text style={styles.title}>Monthly Budget Goal</Text>
-          <CustomDropDown
-            data={budgetData}
-            placeholder="1,000 - 2,500"
-            value={budgetValue}
-            onSelect={setBudgetValue}
-            leftIcon={<appIcons.target />}
-            rightIcon={<appIcons.down />}
-          />
-        </View>
+                {/* Monthly Income */}
+                <View style={styles.inputView}>
+                  <Text style={styles.title}>Monthly Income</Text>
+                  <CustomDropDown
+                    data={incomeData}
+                    placeholder="5,000 - 7,500"
+                    value={values.incomeValue}
+                    onSelect={(val) => setFieldValue("incomeValue", val)}
+                    leftIcon={
+                      <Image
+                        source={appIcons.dollarupdate}
+                        style={styles.dollarSign}
+                      />
+                    }
+                    rightIcon={<appIcons.down />}
+                  />
+                  {touched.incomeValue && errors.incomeValue && (
+                    <Text style={commonStyles.errorText}>
+                      {errors.incomeValue}
+                    </Text>
+                  )}
+                </View>
 
-        {/* Primary Spending Category */}
-        <View style={styles.inputView}>
-          <Text style={styles.pimary}>Primary Spending Category</Text>
-          <FlatList
-            data={categoryData}
-            keyExtractor={(item) => item.id.toString()}
-            numColumns={3}
-            renderItem={renderItem}
-            columnWrapperStyle={{ gap: 20, marginVertical: 8 }}
-          />
-        </View>
+                {/* Currency */}
+                <View style={styles.inputView}>
+                  <Text style={styles.title}>Currency</Text>
+                  <CustomDropDown
+                    data={currencyData}
+                    placeholder="USD - $"
+                    value={values.currencyValue}
+                    onSelect={(val) => setFieldValue("currencyValue", val)}
+                    leftIcon={<appIcons.globe />}
+                    rightIcon={<appIcons.down />}
+                  />
+                  {touched.currencyValue && errors.currencyValue && (
+                    <Text style={commonStyles.errorText}>
+                      {errors.currencyValue}
+                    </Text>
+                  )}
+                </View>
 
-        <TouchableOpacity
-          style={{ width: "100%", marginTop: 15 }}
-          activeOpacity={0.5}
-          onPress={() => navigation.navigate("ChooseYourPlan")}
-        >
-          <CommonLinearGradient style={styles.signInBtn}>
-            <Text style={styles.signInBtnText}>Continue</Text>
-          </CommonLinearGradient>
-        </TouchableOpacity>
-      </KeyboardAwareScrollView>
+                {/* Monthly Budget Goal */}
+                <View style={styles.inputView}>
+                  <Text style={styles.title}>Monthly Budget Goal</Text>
+                  <CustomDropDown
+                    data={budgetData}
+                    placeholder="1,000 - 2,500"
+                    value={values.budgetValue}
+                    onSelect={(val) => setFieldValue("budgetValue", val)}
+                    leftIcon={<appIcons.target />}
+                    rightIcon={<appIcons.down />}
+                  />
+                  {touched.budgetValue && errors.budgetValue && (
+                    <Text style={commonStyles.errorText}>
+                      {errors.budgetValue}
+                    </Text>
+                  )}
+                </View>
+
+                {/* Primary Spending Category */}
+                <View style={styles.inputView}>
+                  <Text style={styles.pimary}>Primary Spending Category</Text>
+                  <FlatList
+                    data={categoryData}
+                    keyExtractor={(item) => item.id.toString()}
+                    numColumns={3}
+                    renderItem={renderItem}
+                    columnWrapperStyle={{ gap: 20, marginVertical: 8 }}
+                  />
+                  {touched.selectedTab && errors.selectedTab && (
+                    <Text style={commonStyles.errorText}>
+                      {errors.selectedTab}
+                    </Text>
+                  )}
+                </View>
+
+                {/* Continue Button */}
+                <TouchableOpacity
+                  style={{ width: "100%", marginTop: 15 }}
+                  activeOpacity={0.5}
+                  onPress={handleSubmit}
+                  disabled={!isValid}
+                >
+                  <CommonLinearGradient
+                    style={[styles.signInBtn, { opacity: !isValid ? 0.6 : 1 }]}
+                  >
+                    <Text style={styles.signInBtnText}>Continue</Text>
+                  </CommonLinearGradient>
+                </TouchableOpacity>
+              </KeyboardAwareScrollView>
+            </>
+          );
+        }}
+      </Formik>
     </SafeAreaView>
   );
 };

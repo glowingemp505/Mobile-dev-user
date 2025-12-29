@@ -7,6 +7,9 @@ import { appIcons } from "src/utils/assets";
 import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
 import { OtpInput } from "react-native-otp-entry";
 import CommonLinearGradient from "src/components/CommonLinearGradient";
+import { Formik } from "formik";
+import { otpValidationSchema } from "src/utils/validation/authValidation";
+import { commonStyles } from "src/utils/styles";
 
 const OTP_TIME = 60;
 
@@ -36,22 +39,25 @@ const VerifyEmail = () => {
     }
   }, [seconds]);
 
-  const handleVerify = () => {
-    clearInterval(timerRef.current);
-    setIsRunning(false);
-    if (routeName === "ForgotPassword") {
-      navigation.navigate("ResetPassword");
-    } else {
-      navigation.navigate("PersonalInfo");
-    }
-  };
-
   const handleResend = () => {
     setSeconds(OTP_TIME);
     setIsRunning(true);
   };
 
   const formatTime = () => `0:${seconds < 10 ? `0${seconds}` : seconds}`;
+
+  const handleVerify = (values) => {
+    clearInterval(timerRef.current);
+    setIsRunning(false);
+
+    console.log("OTP:", values.otp);
+
+    if (routeName === "ForgotPassword") {
+      navigation.navigate("ResetPassword");
+    } else {
+      navigation.navigate("PersonalInfo");
+    }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -69,61 +75,92 @@ const VerifyEmail = () => {
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
       >
-        <View>
-          <View style={styles.greenView}>
-            <Text style={styles.number}>1</Text>
-          </View>
-
-          <View style={styles.boxView}>
-            <Image source={appIcons.emailIcon} style={styles.emailStyle} />
-          </View>
-        </View>
-
-        <Text style={styles.verifyEmail}>Verify Email</Text>
-        <Text style={styles.sixDigit}>We sent a 6-digit code to</Text>
-        <Text style={styles.email}>john@example.com</Text>
-
-        <OtpInput
-          numberOfDigits={6}
-          hideStick
-          type="numeric"
-          secureTextEntry={true}
-          onFilled={(text) => console.log("OTP:", text)}
-          theme={{
-            containerStyle: styles.otpContainer,
-            pinCodeContainerStyle: styles.pinCodeContainer,
-            pinCodeTextStyle: styles.pinCodeText,
-            focusedPinCodeContainerStyle: styles.activePinCodeContainer,
-            filledPinCodeContainerStyle: styles.filledPinCodeContainer,
-            placeholderTextStyle: styles.placeholderText,
-          }}
-        />
-
-        {/* TIMER */}
-        <Text style={styles.resendcode}>
-          Resend Code in <Text style={styles.secondText}>{formatTime()}</Text>
-        </Text>
-
-        <TouchableOpacity
-          style={{ width: "100%" }}
-          activeOpacity={0.5}
-          onPress={handleVerify}
+        <Formik
+          initialValues={{ otp: "" }}
+          validationSchema={otpValidationSchema}
+          onSubmit={handleVerify}
         >
-          <CommonLinearGradient style={styles.signInBtn}>
-            <Text style={styles.signInBtnText}>Verify Email</Text>
-          </CommonLinearGradient>
-        </TouchableOpacity>
+          {({
+            setFieldValue,
+            handleSubmit,
+            values,
+            errors,
+            touched,
+            isValid,
+          }) => (
+            <>
+              <View>
+                <View style={styles.greenView}>
+                  <Text style={styles.number}>1</Text>
+                </View>
 
-        <Text style={styles.dontReceive}>
-          Din’t receive the code? Resend{" "}
-          <Text
-            onPress={handleResend}
-            disabled={seconds > 0}
-            style={[styles.resendBtn, { opacity: seconds > 0 ? 0.5 : 1 }]}
-          >
-            Resend
-          </Text>
-        </Text>
+                <View style={styles.boxView}>
+                  <Image
+                    source={appIcons.emailIcon}
+                    style={styles.emailStyle}
+                  />
+                </View>
+              </View>
+
+              <Text style={styles.verifyEmail}>Verify Email</Text>
+              <Text style={styles.sixDigit}>We sent a 6-digit code to</Text>
+              <Text style={styles.email}>john@example.com</Text>
+
+              <OtpInput
+                numberOfDigits={6}
+                hideStick
+                type="numeric"
+                secureTextEntry={true}
+                value={values.otp}
+                onTextChange={(text) => setFieldValue("otp", text)}
+                theme={{
+                  containerStyle: styles.otpContainer,
+                  pinCodeContainerStyle: styles.pinCodeContainer,
+                  pinCodeTextStyle: styles.pinCodeText,
+                  focusedPinCodeContainerStyle: styles.activePinCodeContainer,
+                  filledPinCodeContainerStyle: styles.filledPinCodeContainer,
+                  placeholderTextStyle: styles.placeholderText,
+                }}
+              />
+
+              {touched.otp && errors.otp && (
+                <Text
+                  style={{ ...commonStyles.errorText, alignSelf: "flex-start" }}
+                >
+                  {errors.otp}
+                </Text>
+              )}
+
+              <Text style={styles.resendcode}>
+                Resend Code in{" "}
+                <Text style={styles.secondText}>{formatTime()}</Text>
+              </Text>
+
+              <TouchableOpacity
+                style={{ width: "100%" }}
+                activeOpacity={0.5}
+                onPress={handleSubmit}
+                disabled={!isValid}
+              >
+                <CommonLinearGradient
+                  style={[styles.signInBtn, { opacity: !isValid ? 0.6 : 1 }]}
+                >
+                  <Text style={styles.signInBtnText}>Verify Email</Text>
+                </CommonLinearGradient>
+              </TouchableOpacity>
+
+              <Text style={styles.dontReceive}>
+                Din’t receive the code?{" "}
+                <Text
+                  onPress={seconds === 0 ? handleResend : null}
+                  style={[styles.resendBtn, { opacity: seconds > 0 ? 0.5 : 1 }]}
+                >
+                  Resend
+                </Text>
+              </Text>
+            </>
+          )}
+        </Formik>
       </KeyboardAwareScrollView>
     </SafeAreaView>
   );
