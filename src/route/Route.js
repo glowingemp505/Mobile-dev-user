@@ -3,6 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { ROUTES } from "../constants/routes";
 
+
 import { navigationRef } from "../utils/navigation/navigation";
 import Login from "../pages/auth/login/Login";
 import Onboarding from "../pages/auth/onboarding/Onboarding";
@@ -29,7 +30,7 @@ function Route() {
     <NavigationContainer ref={navigationRef}>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        // initialRouteName={ROUTES.HOME}
+         initialRouteName={ROUTES.ONBOARDING}
       >
         <Stack.Screen name={ROUTES.LOGIN} component={Login} />
         <Stack.Screen name={ROUTES.ForgotPassword} component={ForgotPassword} />

@@ -22,9 +22,9 @@ const Home = () => {
   const navigation = useNavigation();
 
   const data = [
-    { id: 1, color: "#1C0F34", title: "Add", icon: appIcons.addPrimay },
-    { id: 2, color: "#0B2718", title: "Send", icon: appIcons.send },
-    { id: 3, color: "#13213A", title: "Request", icon: appIcons.download },
+    { id: 1, color: "#1C0F34", title: "Add\nAccount", icon: appIcons.addPrimay },
+    { id: 2, color: "#0B2718", title: "Savings\nGoal", icon: appIcons.money, tintColor: "#14a249" },
+    { id: 3, color: "#13213A", title: "Budget", icon: appIcons.budget, tintColor: "#3d83f6" },
     { id: 4, color: "#38270B", title: "Stats", icon: appIcons.stats },
   ];
 
@@ -59,9 +59,12 @@ const Home = () => {
           activeOpacity={0.5}
           style={[styles.boxStyle, { backgroundColor: item.color }]}
         >
-          <Image source={item.icon} style={styles.icon} />
+          <Image
+            source={item.icon}
+            style={[styles.icon, item.tintColor && { tintColor: item.tintColor }]}
+          />
         </TouchableOpacity>
-        <Text style={styles.title}>{item.title}</Text>
+        <Text style={[styles.title, { textAlign: 'center' }]}>{item.title}</Text>
       </View>
     );
   };

@@ -56,6 +56,8 @@ const appImages = {
 };
 
 const appIcons = {
+  money: require("@assets/icons/money.png"),
+  budget: require("@assets/icons/budget.png"),
   splashlogo: require("@assets/icons/splash.png"),
   rightArrow: require("@assets/icons/rightArrow.png"),
   leftArrow: require("@assets/icons/leftArrow.png"),
