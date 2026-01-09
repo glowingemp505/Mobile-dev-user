@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "644421689498",
+    "project_id": "spendnest-38afd",
+    "storage_bucket": "spendnest-38afd.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:644421689498:android:4c14025a5520154172bf23",
+        "android_client_info": {
+          "package_name": "com.spendnest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfOHKqdGRmfiC-Vyjbggm09lXiPkLpX5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

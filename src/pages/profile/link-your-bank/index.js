@@ -82,6 +82,7 @@ const LinkYourBank = () => {
             placeholder="Search bank..."
             placeholderTextColor={colors.white}
             style={styles.inputStyle}
+            autoCapitalize="none"
           />
         </View>
 

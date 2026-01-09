@@ -98,6 +98,7 @@ const Signup = ({ navigation }) => {
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   secureTextEntry={!showPassword}
+                  autoCapitalize="none"
                 />
                 <TouchableOpacity
                   onPress={() => setShowPassword((prev) => !prev)}
@@ -170,6 +171,7 @@ const Signup = ({ navigation }) => {
                   onChangeText={handleChange("confirmPassword")}
                   onBlur={handleBlur("confirmPassword")}
                   secureTextEntry={!showConfirmPassword}
+                  autoCapitalize="none"
                 />
                 <TouchableOpacity
                   onPress={() => setShowConfirmPassword((prev) => !prev)}

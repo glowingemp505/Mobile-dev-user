@@ -64,6 +64,7 @@ const PaymentDetails = () => {
                 placeholder="4242 4242 4242 4242"
                 placeholderTextColor={colors.gray}
                 keyboardType="number-pad"
+                autoCapitalize="none"
               />
             </View>
           </View>
@@ -78,6 +79,7 @@ const PaymentDetails = () => {
                 placeholder="MM/YY"
                 placeholderTextColor={colors.gray}
                 keyboardType="number-pad"
+                autoCapitalize="none"
               />
             </View>
 
@@ -90,6 +92,7 @@ const PaymentDetails = () => {
                 placeholderTextColor={colors.gray}
                 keyboardType="number-pad"
                 secureTextEntry
+                autoCapitalize="none"
               />
             </View>
           </View>

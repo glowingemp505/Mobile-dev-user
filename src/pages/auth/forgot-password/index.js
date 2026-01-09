@@ -70,6 +70,8 @@ const ForgotPassword = () => {
                     value={values.email}
                     onChangeText={handleChange("email")}
                     onBlur={handleBlur("email")}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
                   />
                 </View>
                 {touched.email && errors.email && (

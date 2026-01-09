@@ -81,6 +81,7 @@ const ChangesPassword = () => {
                       onChangeText={handleChange("password")}
                       onBlur={handleBlur("password")}
                       secureTextEntry={!showPassword}
+                      autoCapitalize="none"
                     />
                     <TouchableOpacity
                       onPress={handleTogglePassword}
@@ -119,6 +120,7 @@ const ChangesPassword = () => {
                       value={values.confirmPassword}
                       onChangeText={handleChange("confirmPassword")}
                       onBlur={handleBlur("confirmPassword")}
+                      autoCapitalize="none"
                       secureTextEntry={!showConfirmPassword}
                     />
                     <TouchableOpacity

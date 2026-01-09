@@ -72,6 +72,8 @@ const Login = () => {
                   value={values.email}
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
+                  autoCapitalize="none"
+
                 />
               </View>
               {touched.email && errors.email && (
@@ -90,6 +92,7 @@ const Login = () => {
                   onChangeText={handleChange("password")}
                   onBlur={handleBlur("password")}
                   secureTextEntry={!showPassword}
+                  autoCapitalize="none"
                 />
                 <TouchableOpacity
                   onPress={handleTogglePassword}
