@@ -17,12 +17,14 @@ import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
 import { loginValidationSchema } from "src/utils/validation/authValidation";
 import styles from "./styles";
+import SocialLogin from "./SocialLogin";
 
 const { width } = Dimensions.get("window");
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const navigation = useNavigation();
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleTogglePassword = () => setShowPassword((prev) => !prev);
 
@@ -73,7 +75,6 @@ const Login = () => {
                   onChangeText={handleChange("email")}
                   onBlur={handleBlur("email")}
                   autoCapitalize="none"
-
                 />
               </View>
               {touched.email && errors.email && (
@@ -130,23 +131,7 @@ const Login = () => {
                 <Text style={styles.orText}>Or continue with</Text>
                 <View style={styles.line} />
               </View>
-
-              <View style={styles.socialRow}>
-                <TouchableOpacity style={styles.socialBtn}>
-                  <Image
-                    source={appIcons.googleIcon}
-                    style={styles.socialIcon}
-                  />
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.socialBtn}>
-                  <Image
-                    source={appIcons.appleIcon}
-                    style={styles.socialIcon}
-                  />
-                </TouchableOpacity>
-              </View>
-
+              <SocialLogin isLoading={isLoading} setIsLoading={setIsLoading} />
               <TouchableOpacity
                 style={styles.signupRow}
                 onPress={() => navigation.navigate("Signup")}

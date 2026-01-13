@@ -9,15 +9,7 @@ import { toastConfig } from "./src/CustomToast";
 import { colors } from "./src/utils/styles";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 
-// Firebase Modular Imports (v22+)
-import {
-  getMessaging,
-  requestPermission,
-  getToken,
-  onTokenRefresh,
-  registerDeviceForRemoteMessages,
-  AuthorizationStatus,
-} from "@react-native-firebase/messaging";
+import messaging from "@react-native-firebase/messaging";
 
 function App() {
   const requestPermissions = useRequestPermissions();
@@ -33,22 +25,25 @@ function App() {
   useEffect(() => {
     const initFCM = async () => {
       try {
-        const messaging = getMessaging();
+        await messaging().registerDeviceForRemoteMessages();
+        const token = await messaging().getToken();
+        console.log("FCM Token:", token);
+        // const messaging = getMessaging();
 
-        // 1. Request Permission
-        const authStatus = await requestPermission(messaging);
-        const enabled =
-          authStatus === AuthorizationStatus.AUTHORIZED ||
-          authStatus === AuthorizationStatus.PROVISIONAL;
+        // // 1. Request Permission
+        // const authStatus = await requestPermission(messaging);
+        // const enabled =
+        //   authStatus === AuthorizationStatus.AUTHORIZED ||
+        //   authStatus === AuthorizationStatus.PROVISIONAL;
 
-        if (enabled) {
-          console.log("FCM Authorization status:", authStatus);
-          await registerDeviceForRemoteMessages(messaging);
+        // if (enabled) {
+        //   console.log("FCM Authorization status:", authStatus);
+        //   await registerDeviceForRemoteMessages(messaging);
 
-          // 3. Get the Token
-          const token = await getToken(messaging);
-          console.log("FCM Token:", token);
-        }
+        //   // 3. Get the Token
+        //   const token = await getToken(messaging);
+        //   console.log("FCM Token:", token);
+        // }
       } catch (e) {
         // If you are on a simulator, it will always land here
         // with the 'messaging/unregistered' error.

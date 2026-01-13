@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* SpendNestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* SpendNestTests.m */; };
-		019E4FB42F10E13900B38D7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 019E4FB32F10E13900B38D7B /* GoogleService-Info.plist */; };
+		01717C012F14C993003D6A58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01717C002F14C993003D6A58 /* GoogleService-Info.plist */; };
 		028718FEBE8D40398E6894F8 /* Inter-24pt-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A62A18C503E4C35BC25DE96 /* Inter-24pt-BoldItalic.ttf */; };
 		0297F0D2D0744F3B866CB932 /* Inter-28pt-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DADC9E32D8C46C0A8FDF532 /* Inter-28pt-Black.ttf */; };
 		055B8A3958454F86B31ED048 /* Inter-18pt-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F53D836FAF61470CAF1236D5 /* Inter-18pt-BoldItalic.ttf */; };
@@ -87,8 +87,9 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SpendNestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpendNestTests.m; sourceTree = "<group>"; };
 		0147DC55CCCE4C02A4C3B72F /* Inter-18pt-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-18pt-MediumItalic.ttf"; path = "../assets/fonts/Inter-18pt-MediumItalic.ttf"; sourceTree = "<group>"; };
+		01717C002F14C993003D6A58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		01717C022F14CEBC003D6A58 /* SpendNestDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SpendNestDebug.entitlements; path = SpendNest/SpendNestDebug.entitlements; sourceTree = "<group>"; };
 		019E4FB22F10D02900B38D7B /* SpendNestRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = SpendNestRelease.entitlements; path = SpendNest/SpendNestRelease.entitlements; sourceTree = "<group>"; };
-		019E4FB32F10E13900B38D7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		035819E8130F4EE88E695E1D /* Inter-28pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-28pt-BlackItalic.ttf"; path = "../assets/fonts/Inter-28pt-BlackItalic.ttf"; sourceTree = "<group>"; };
 		0A1B7E6730DE4E108EC9A7A4 /* Inter-24pt-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-24pt-SemiBold.ttf"; path = "../assets/fonts/Inter-24pt-SemiBold.ttf"; sourceTree = "<group>"; };
 		0A5DE13F66CF4BC1A00CDFAC /* Inter-18pt-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter-18pt-ExtraBoldItalic.ttf"; path = "../assets/fonts/Inter-18pt-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
@@ -199,7 +200,7 @@
 		13B07FAE1A68108700A75B9A /* SpendNest */ = {
 			isa = PBXGroup;
 			children = (
-				019E4FB32F10E13900B38D7B /* GoogleService-Info.plist */,
+				01717C022F14CEBC003D6A58 /* SpendNestDebug.entitlements */,
 				019E4FB22F10D02900B38D7B /* SpendNestRelease.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -232,6 +233,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				01717C002F14C993003D6A58 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* SpendNest */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SpendNestTests */,
@@ -453,7 +455,7 @@
 				EB8A1C65914547B1A72DC157 /* Inter-24pt-Light.ttf in Resources */,
 				4192FEBCDE244D58A1D51B19 /* Inter-24pt-LightItalic.ttf in Resources */,
 				31F48DF8FA824CE38A87698F /* Inter-24pt-Medium.ttf in Resources */,
-				019E4FB42F10E13900B38D7B /* GoogleService-Info.plist in Resources */,
+				01717C012F14C993003D6A58 /* GoogleService-Info.plist in Resources */,
 				9AEBB88736C54A6F812C296F /* Inter-24pt-MediumItalic.ttf in Resources */,
 				D9366164811847B0BEEE2BD5 /* Inter-24pt-Regular.ttf in Resources */,
 				A37EB414B99145409729699D /* Inter-24pt-SemiBold.ttf in Resources */,
@@ -661,6 +663,7 @@
 			baseConfigurationReference = 6911EA1539B958C2C4DF1F3C /* Pods-SpendNest-SpendNestTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = J898DPF329;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -689,6 +692,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = J898DPF329;
 				INFOPLIST_FILE = SpendNestTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -713,7 +717,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = SpendNest/SpendNestDebug.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = J898DPF329;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = SpendNest/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
@@ -727,7 +733,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.spendnest;
 				PRODUCT_NAME = SpendNest;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;

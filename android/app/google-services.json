@@ -12,7 +12,12 @@
           "package_name": "com.spendnest"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "644421689498-8etcmoab011c6ot2e12ch7fe2e9pu400.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAfOHKqdGRmfiC-Vyjbggm09lXiPkLpX5U"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "644421689498-8etcmoab011c6ot2e12ch7fe2e9pu400.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "644421689498-3nfkq7ll66ve8r7nduvtdbe7rc9h2hah.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.spendnest"
+              }
+            }
+          ]
         }
       }
     }
